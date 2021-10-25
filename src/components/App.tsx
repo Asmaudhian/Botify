@@ -7,7 +7,7 @@ function App() {
 
   useEffect(()=> {
     const currentNEO = new NEOList([]);
-    currentNEO.refreshNEO()
+    currentNEO.refreshNEO();
   }, [])
 
   return (
