@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import logo from '../logo.svg';
+import { NEOList } from '../shared/classes/NEOList';
 import './App.css';
 
 function App() {
+
+  useEffect(()=> {
+    const currentNEO = new NEOList([]);
+    currentNEO.refreshNEO()
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
