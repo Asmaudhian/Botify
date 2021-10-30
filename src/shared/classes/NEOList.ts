@@ -37,7 +37,6 @@ export class NEOList {
                 ));
             localStorage.setItem('NEO', JSON.stringify({ objects: this.objects, timestamp: new Date().getTime() / 1000 }));
         }
-        console.log(this.objects)
         return this.objects;
     }
 

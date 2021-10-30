@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
 declare global {
-    interface Window { 
-        google: any; 
+    interface Window {
+        google: typeof google;
     }
 }
 
+/**
+    * Download and apply google chart script to the app's head.
+*/
 function useGoogleCharts() {
-    const [google, setGoogle] = useState(null);
+    const [googleScript, setGoogle] = useState<typeof google>();
 
     useEffect(() => {
-        if (!google) {
+        if (!googleScript) {
             const head = document.head;
             let script = document.getElementById('googleChartsScript') as HTMLScriptElement;
             if (!script) {
@@ -35,9 +38,9 @@ function useGoogleCharts() {
                 script.remove();
             }
         }
-    }, [google]);
+    }, [googleScript]);
 
-    return google;
+    return googleScript;
 }
 
 export default useGoogleCharts;
