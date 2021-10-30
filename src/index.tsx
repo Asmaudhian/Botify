@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </React.StrictMode>,
   document.getElementById('root')
 );
