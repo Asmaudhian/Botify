@@ -33,7 +33,8 @@ export class NEOList {
                 object.name, 
                 object.name_limited, 
                 object.estimated_diameter.kilometers.estimated_diameter_min, 
-                object.estimated_diameter.kilometers.estimated_diameter_max
+                object.estimated_diameter.kilometers.estimated_diameter_max,
+                object.close_approach_data
                 ));
             localStorage.setItem('NEO', JSON.stringify({ objects: this.objects, timestamp: new Date().getTime() / 1000 }));
         }
