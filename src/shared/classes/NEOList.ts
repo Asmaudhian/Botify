@@ -29,13 +29,13 @@ export class NEOList {
             const apiData = await fetch('https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY');
             const readableData: apiResponse = await apiData.json();
             this.objects = readableData.near_earth_objects.map((object: any) => new NEO(
-                object.id, 
-                object.name, 
-                object.name_limited, 
-                object.estimated_diameter.kilometers.estimated_diameter_min, 
+                object.id,
+                object.name,
+                object.name_limited,
+                object.estimated_diameter.kilometers.estimated_diameter_min,
                 object.estimated_diameter.kilometers.estimated_diameter_max,
                 object.close_approach_data
-                ));
+            ));
             localStorage.setItem('NEO', JSON.stringify({ objects: this.objects, timestamp: new Date().getTime() / 1000 }));
         }
         return this.objects;
@@ -58,5 +58,24 @@ export class NEOList {
     */
     private getLocalData(key: string): LocalData {
         return JSON.parse(localStorage.getItem(key) as string);
+    }
+
+    /**
+        * Get a list of all current orbited body from NEO.
+    */
+    public getOrbitingBodyList(): Array<string> {
+        let orbitingArray: Array<string> = [];
+        for (const neo of this.objects) {
+            if (orbitingArray.indexOf(neo.orbitingBody) === -1) {
+                orbitingArray.push(neo.orbitingBody);
+            }
+        }
+        return orbitingArray;
+    }
+    /**
+        * Return the list of NEO filtered with a orbiting body.
+    */
+    public getFilteredNEO(orbitingBody: string): Array<NEO> {
+        return this.objects.filter((neo: NEO) => neo.orbitingBody === orbitingBody);
     }
 }
