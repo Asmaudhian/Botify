@@ -76,6 +76,10 @@ export class NEOList {
         * Return the list of NEO filtered with a orbiting body.
     */
     public getFilteredNEO(orbitingBody: string): Array<NEO> {
-        return this.objects.filter((neo: NEO) => neo.orbitingBody === orbitingBody);
+        if (orbitingBody !== '') {
+            return this.objects.filter((neo: NEO) => neo.orbitingBody === orbitingBody);
+        } else {
+            return this.objects;
+        }
     }
 }

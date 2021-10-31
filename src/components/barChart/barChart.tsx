@@ -9,7 +9,6 @@ interface chartProps {
 
 const BarChart = (props: chartProps) => {
     const google = useGoogleCharts();
-
     useEffect(() => {
         if (google) {
             drawGraph();
