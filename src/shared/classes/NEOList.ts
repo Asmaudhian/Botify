@@ -38,7 +38,7 @@ export class NEOList {
             ));
             localStorage.setItem('NEO', JSON.stringify({ objects: this.objects, timestamp: new Date().getTime() / 1000 }));
         }
-        return this.objects;
+        return this.objects.sort((neo1: NEO, neo2: NEO) => neo2.avgDiameter - neo1.avgDiameter);
     }
 
     /**

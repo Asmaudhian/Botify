@@ -21,7 +21,6 @@ const BarChart = (props: chartProps) => {
     const drawGraph = () => {
         if (google) {
             const data = google.visualization.arrayToDataTable(formatData(props.NEOArray));
-
             const materialOptions = {
                 chart: {
                     title: 'Near Earth Objects',
@@ -51,7 +50,7 @@ const BarChart = (props: chartProps) => {
         * Format data before passing it to google charts.
     */
     const formatData = (NEOArray: Array<NEO>): Array<any> => {
-        const headers = ['NEO Name', 'Min Estimated Diameter (km)', 'Max Estimated Diameter'];
+        const headers = ['NEO Name', 'Min Estimated Diameter (km)', 'Max Estimated Diameter (km)'];
         const neoData = NEOArray.map((object: NEO) => [object.name, object.minDiameter, object.maxDiameter]);
         return [headers, ...neoData];
     }
