@@ -1,3 +1,6 @@
+import { CloseApproachData } from "./CloseAppraochData";
+import { CloseApproachDataList } from "./CloseApproachDataList";
+
 export class NEO {
     
     public id: number;
@@ -6,6 +9,8 @@ export class NEO {
     public minDiameter: number;
     public maxDiameter: number;
     public avgDiameter: number;
+    public orbitingBody: string;
+    public closeApproachData: CloseApproachDataList;
 
     constructor(
         id: number,
@@ -13,6 +18,7 @@ export class NEO {
         name_limited: string,
         minDiameter: number,
         maxDiameter: number,
+        closeApproachData: Array<CloseApproachData>
     ){
         this.id = id;
         this.name = name;
@@ -20,5 +26,7 @@ export class NEO {
         this.minDiameter = minDiameter;
         this.maxDiameter = maxDiameter;
         this.avgDiameter = (maxDiameter + minDiameter) / 2;
+        this.closeApproachData = new CloseApproachDataList(closeApproachData);
+        this.orbitingBody = this.closeApproachData.getCurrentOrbit();
     }
 }
